@@ -1,0 +1,211 @@
+@media (prefers-color-scheme: light) { :root {
+	--main-bg-color: rgb(249, 249, 249);
+	--border-color: rgb(180, 180, 180);
+	--private-mode-bg-color: rgb(185, 122, 255);
+}}
+
+@media (prefers-color-scheme: dark) { :root {
+	--main-bg-color: rgb(24, 26, 27);
+	--border-color: rgb(60, 60, 60);
+	--private-mode-bg-color: rgb(37, 0, 62);
+}}
+
+:root {
+	--sidebar-width: 225px;
+	--navbar-icon-width: 30px;
+	--navbar-height: 30px;
+	--top-offset: 0px;
+	--topbar-left-offset: 5px;
+	--topbar-right-offset: 5px;
+	--border-width: 1px;
+	
+	--urlbar-offset: 106px; /* used for autocomplete alignment */
+	--content-offset: calc(var(--navbar-height)
+		+ var(--top-offset) + var(--border-width));
+}
+
+#main-window[privatebrowsingmode="temporary"] {
+	--main-bg-color: var(--private-mode-bg-color);
+}
+
+#main-window[sizemode=maximized] {
+	--top-offset: 7px;
+}
+
+
+
+#main-window[sizemode="fullscreen"] #navigator-toolbox {
+	visibility: collapse;
+}
+
+#main-window[sizemode="fullscreen"] #sidebar-box {
+	visibility: collapse;
+}
+
+#main-window[sizemode="fullscreen"] #appcontent {
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+}
+
+/*
+#main-window[sizemode="fullscreen"] #tabbrowser-tabbox {
+	display: block;
+	position: fixed;
+	top: 0;
+	left: 0;
+}
+
+#main-window[sizemode="fullscreen"] #tabbrowser-tabpanels {
+	width: 100%;
+	height: 100%;
+}
+*/
+
+
+/* navbar  { */
+	#navigator-toolbox {
+		display: block;
+		position: fixed !important;
+		top: var(--top-offset);
+		left: var(--sidebar-width);
+		width: calc(100% - var(--sidebar-width));
+		height: calc(var(--navbar-height) + var(--border-width));
+		z-index: 1;
+		/* displays as border-box, border will be inset */
+		border-bottom: var(--border-width) solid var(--border-color) !important;
+		background-color: var(--main-bg-color) !important;
+	}
+	
+	#nav-bar {
+		top: -31px; /* something broke with positioning, have to offset by titlebar height */
+		left: 0;
+		width: 100%;
+		height: 100%;
+		background-color: transparent !important;
+	}
+	
+	#nav-bar-customization-target {
+		margin-left: var(--topbar-left-offset);
+	}
+	
+	
+	#urlbar-background {
+		background-color: var(--main-bg-color) !important;
+		border: none !important;
+	}
+	
+	.urlbarView-body-inner {
+		border-top: none !important;
+	}
+	
+	#urlbar[open="true"] #urlbar-input-container {
+		border-bottom: var(--border-width) solid var(--border-color) !important;
+		border-radius: 0 !important;
+	}
+
+	.urlbarView {
+		top: var(--border-width) !important;
+		--item-padding-start: var(--urlbar-offset) !important;
+		border: none !important;
+	}
+	
+	.urlbarView-row[selected] {
+		background-color: #222 !important;
+	}
+	
+	.urlbarView-row-inner {
+		background-color: transparent !important;
+	}
+	
+	
+	#titlebar {
+		visibility: collapse;
+	}
+	
+	#nav-bar-customization-target, #nav-bar-overflow-button, #PanelUI-button, #PanelUI-menu-button {
+		height: 100%;
+	}
+	
+	#nav-bar-overflow-button {
+		visibility: collapse;
+	}
+	
+	#PanelUI-button {
+		position: absolute;
+		top: 0;
+		right: var(--topbar-right-offset);
+		width: var(--navbar-icon-width);
+		z-index: 2;
+	}
+	
+	#pocket-button-box {
+		display: none;
+	}
+
+	#urlbar {
+		margin: 0 !important;
+		border: none !important;
+		border-radius: 0 !important;
+	}
+	.urlbar-input-box {
+		margin-top: -2px;
+	}
+/* } */
+
+
+
+/* sidebar { */
+	#sidebar-box {
+		display: block;
+		position: fixed !important;
+		top: var(--top-offset);
+		left: 0;
+		width: var(--sidebar-width);
+		height: calc(100% - var(--top-offset));
+		border-right: var(--border-width) solid var(--border-color);
+	}
+
+	#sidebar-box[hidden=true] {
+		visibility: collapse;
+		background-color: var(--main-bg-color) !important;
+	}
+
+	#sidebar-header {
+		display: none;
+	}
+
+	#sidebar {
+		width: 100% !important;
+		height: 100%;
+		margin: 0;
+	}
+	
+	#browser {
+		background-color: var(--main-bg-color) !important;
+	}
+/* } */
+
+
+
+/* content { */
+	#sidebar-box[hidden=true] ~ #appcontent {
+		--sidebar-width: 0px;
+	}
+
+	#appcontent {
+		display: block;
+		position: fixed !important;
+		top: var(--content-offset);
+		left: var(--sidebar-width);
+		width: calc(100% - var(--sidebar-width));
+		height: calc(100% - var(--content-offset));
+	}
+	
+	#tabbrowser-tabbox {
+		width: 100%;
+		height: 100%;
+		margin: 0;
+	}
+/* } */

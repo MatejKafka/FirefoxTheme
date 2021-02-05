@@ -1,0 +1,40 @@
+@media (prefers-color-scheme: light) { :root {
+  --main-bg-color: rgb(210, 210, 210);
+  --tab-bg-color: rgb(249, 249, 249);
+  --border-color: rgb(180, 180, 180);
+  --active-bg-color: rgb(185, 223, 255);
+}}
+
+@media (prefers-color-scheme: dark) { :root {
+  --main-bg-color: rgb(24, 26, 27);
+  --tab-bg-color: var(--main-bg-color);
+  --border-color: rgb(70, 70, 70);
+  --active-bg-color: rgb(50, 50, 50);
+}}
+
+
+:root, #tabbar {
+  background-color: var(--main-bg-color);
+}
+
+.tab {
+  height: 31px !important;
+  padding-left: 0 !important;
+  background-color: var(--tab-bg-color);
+  border-color: var(--border-color);
+}
+
+.tab.active {
+  background-color: var(--active-bg-color);
+  border-color: var(--border-color);
+}
+.tab.active + .tab {
+  /* change color of the bottom border of an active tab */
+  border-top-color: var(--border-color);
+}
+
+/* hide scrollbar */
+#tabbar {
+  scrollbar-width: none;
+}
+
