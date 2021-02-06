@@ -25,3 +25,14 @@ Light theme:
 	3. Press the "Load from File" button and select the `TreeStyleTab.css` file from this repository.
 5. Restart Firefox
 6. Enjoy the new look, create an issue here on GitHub if something seems to be broken
+
+## Questions
+
+### How do I switch between light and dark theme?
+
+The color scheme automatically  changes based on system theme, so switch on/off dark mode in system settings (on Windows 10, search "dark mode" in Start menu).
+
+### How do I maximize/minimize/close the window?
+
+Learn your keyboard shortcuts. :)
+For Windows, it's `Win-UpArrow` to maximize, `Alt-f4` to close a window. Minimizing is a bit more complicated, simplest way I know is `Alt-Space`, followed by `n`. Personally, I use a custom AutoHotkey binding where `RShift` minimizes current window.
