@@ -35,4 +35,5 @@ The color scheme automatically  changes based on system theme, so switch on/off 
 ### How do I maximize/minimize/close the window?
 
 Learn your keyboard shortcuts. :)
+
 For Windows, it's `Win-UpArrow` to maximize, `Alt-f4` to close a window. Minimizing is a bit more complicated, simplest way I know is `Alt-Space`, followed by `n`. Personally, I use a custom AutoHotkey binding where `RShift` minimizes current window.
