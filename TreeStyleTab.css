@@ -7,7 +7,7 @@
 
 @media (prefers-color-scheme: dark) { :root {
   --main-bg-color: rgb(24, 26, 27);
-  --tab-bg-color: var(--main-bg-color);
+  --tab-bg-color: rgb(36, 36, 40);
   --border-color: rgb(70, 70, 70);
   --active-bg-color: rgb(50, 50, 50);
 }}
@@ -20,11 +20,14 @@
 .tab {
   height: 31px !important;
   padding-left: 0 !important;
-  background-color: var(--tab-bg-color);
   border-color: var(--border-color);
 }
 
-.tab.active {
+tab-item-substance {
+  background-color: var(--tab-bg-color)
+}
+
+.tab.active tab-item-substance {
   background-color: var(--active-bg-color);
   border-color: var(--border-color);
 }

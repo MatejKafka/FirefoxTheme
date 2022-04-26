@@ -28,11 +28,6 @@
 	--main-bg-color: var(--private-mode-bg-color);
 }
 
-#main-window[sizemode=maximized] {
-	--top-offset: 7px;
-}
-
-
 
 #main-window[sizemode="fullscreen"] #navigator-toolbox {
 	visibility: collapse;
@@ -201,6 +196,9 @@
 		left: var(--sidebar-width);
 		width: calc(100% - var(--sidebar-width));
 		height: calc(100% - var(--content-offset));
+		/* this fixes a rare bug where the whole browser viewport becomes offset by 16px;
+		   probably caused by some erronous whitespace being present*/
+		/*font-size: 0;*/
 	}
 	
 	#tabbrowser-tabbox {
