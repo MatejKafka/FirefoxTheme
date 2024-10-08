@@ -1,43 +1,69 @@
 @media (prefers-color-scheme: light) { :root {
-  --main-bg-color: rgb(210, 210, 210);
-  --tab-bg-color: rgb(249, 249, 249);
-  --border-color: rgb(180, 180, 180);
-  --active-bg-color: rgb(185, 223, 255);
+	--fg-color: black;
+	--main-bg-color: rgb(249, 249, 249);
+	--border-color: transparent;
+	--active-bg-color: rgb(185, 223, 255);
+	--hover-bg-color: #dddddd;
 }}
 
 @media (prefers-color-scheme: dark) { :root {
-  --main-bg-color: rgb(24, 26, 27);
-  --tab-bg-color: rgb(36, 36, 40);
-  --border-color: rgb(70, 70, 70);
-  --active-bg-color: rgb(50, 50, 50);
+	--fg-color: white;
+	--main-bg-color: rgb(24, 26, 27);
+	--border-color: transparent;
+	--active-bg-color: rgb(70, 70, 70);
+	--hover-bg-color: #333333;
 }}
 
-
-:root, #tabbar {
-  background-color: var(--main-bg-color);
+body {
+	font-size: 85%;
 }
 
-.tab {
-  height: 31px !important;
-  padding-left: 0 !important;
-  border-color: var(--border-color);
+#background {
+	background-color: var(--main-bg-color);
+}
+
+.after-tabs {
+	border-top: 1px solid var(--border-color);
+	border-bottom: 1px solid var(--border-color);
+	cursor: pointer;
 }
 
 tab-item-substance {
-  background-color: var(--tab-bg-color)
+	padding: 5px 5px 5px 0;
 }
 
-.tab.active tab-item-substance {
-  background-color: var(--active-bg-color);
-  border-color: var(--border-color);
+tab-item.collapsed {
+	display: none;
 }
-.tab.active + .tab {
-  /* change color of the bottom border of an active tab */
-  border-top-color: var(--border-color);
+
+tab-label {
+	margin-left: 3px;
+    line-height: 1.2 !important;
+}
+
+tab-closebox {
+	display: none;
+}
+
+tab-item {
+	pointer-events: all !important;
+}
+
+tab-item:hover {
+	background-color: var(--hover-bg-color);
+}
+
+tab-item.active tab-item-substance {
+	background-color: var(--active-bg-color);
 }
 
 /* hide scrollbar */
-#tabbar {
-  scrollbar-width: none;
+#tabbar, #normal-tabs-container {
+	scrollbar-width: none;
 }
 
+/* hide extra margin for the (now hidden) scrollbar; copied from TST base.css stylesheet */
+:root.left.shift-tabs-for-scrollbar-only-on-hover.on-scrollbar-area:hover #tabbar.overflow.scrollbar-autohide tab-item:not(.pinned) tab-item-substance,
+:root.left:not(.shift-tabs-for-scrollbar-only-on-hover) #tabbar.overflow.scrollbar-autohide tab-item:not(.pinned) tab-item-substance {
+	margin-left: calc(var(--tab-margin-left) + var(--tab-indent));
+}

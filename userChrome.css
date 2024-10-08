@@ -1,31 +1,47 @@
 @media (prefers-color-scheme: light) { :root {
 	--main-bg-color: rgb(249, 249, 249);
 	--border-color: rgb(180, 180, 180);
+	--highlight-color: #ddd;
 	--private-mode-bg-color: rgb(185, 122, 255);
 }}
 
 @media (prefers-color-scheme: dark) { :root {
 	--main-bg-color: rgb(24, 26, 27);
 	--border-color: rgb(60, 60, 60);
+	--highlight-color: #222;
 	--private-mode-bg-color: rgb(37, 0, 62);
 }}
 
 :root {
 	--sidebar-width: 225px;
-	--navbar-icon-width: 30px;
-	--navbar-height: 30px;
-	--top-offset: 0px;
-	--topbar-left-offset: 5px;
-	--topbar-right-offset: 5px;
+	--navbar-icon-width: 28px;
+	--navbar-height: 28px;
 	--border-width: 1px;
+	--navbar-alignment: 0px;
 	
 	--urlbar-offset: 106px; /* used for autocomplete alignment */
-	--content-offset: calc(var(--navbar-height)
-		+ var(--top-offset) + var(--border-width));
+	--content-offset: calc(var(--navbar-height) + var(--border-width));
 }
 
 #main-window[privatebrowsingmode="temporary"] {
 	--main-bg-color: var(--private-mode-bg-color);
+}
+
+
+/* Remove navbar and sidebar in popup windows. */
+:root[chromehidden*="location"] #navigator-toolbox {
+	visibility: collapse;
+}
+
+:root[chromehidden*="location"] #sidebar-box {
+	visibility: collapse;
+}
+
+:root[chromehidden*="location"] #tabbrowser-tabbox {
+	top: 0;
+	left: 0;
+	width: 100% !important;
+	height: 100% !important;
 }
 
 
@@ -37,64 +53,54 @@
 	visibility: collapse;
 }
 
-#main-window[sizemode="fullscreen"] #appcontent {
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: 100%;
-}
-
-/*
 #main-window[sizemode="fullscreen"] #tabbrowser-tabbox {
-	display: block;
-	position: fixed;
 	top: 0;
 	left: 0;
+	width: 100% !important;
+	height: 100% !important;
 }
-
-#main-window[sizemode="fullscreen"] #tabbrowser-tabpanels {
-	width: 100%;
-	height: 100%;
-}
-*/
 
 
 /* navbar  { */
 	#navigator-toolbox {
 		display: block;
 		position: fixed !important;
-		top: var(--top-offset);
-		left: var(--sidebar-width);
-		width: calc(100% - var(--sidebar-width));
+		top: 0;
+		left: 0;
+		width: 100%;
 		height: calc(var(--navbar-height) + var(--border-width));
-		z-index: 1;
+		/* Leave room for the sidebar */
+		padding-left: var(--sidebar-width);
 		/* displays as border-box, border will be inset */
 		border-bottom: var(--border-width) solid var(--border-color) !important;
 		background-color: var(--main-bg-color) !important;
 	}
 	
 	#nav-bar {
-		top: -31px; /* something broke with positioning, have to offset by titlebar height */
-		left: 0;
 		width: 100%;
 		height: 100%;
 		background-color: transparent !important;
 	}
-	
-	#nav-bar-customization-target {
-		margin-left: var(--topbar-left-offset);
+
+	/* Remove navbar if it should be hidden (e.g. in popup windows). */
+	:root[chromehidden*="location"] #navigator-toolbox-background {
+		visibility: collapse;
 	}
-	
 	
 	#urlbar-background {
 		background-color: var(--main-bg-color) !important;
 		border: none !important;
+		outline: none !important;
 	}
 	
 	.urlbarView-body-inner {
 		border-top: none !important;
 	}
 	
+	#urlbar-input-container {
+		top: 2px;
+	}
+
 	#urlbar[open="true"] #urlbar-input-container {
 		border-bottom: var(--border-width) solid var(--border-color) !important;
 		border-radius: 0 !important;
@@ -107,46 +113,54 @@
 	}
 	
 	.urlbarView-row[selected] {
-		background-color: #222 !important;
+		background-color: var(--highlight-color) !important;
 	}
 	
 	.urlbarView-row-inner {
 		background-color: transparent !important;
 	}
 	
-	
-	#titlebar {
+	#TabsToolbar {
 		visibility: collapse;
 	}
 	
-	#nav-bar-customization-target, #nav-bar-overflow-button, #PanelUI-button, #PanelUI-menu-button {
-		height: 100%;
-	}
-	
-	#nav-bar-overflow-button {
-		visibility: collapse;
-	}
-	
-	#PanelUI-button {
-		position: absolute;
-		top: 0;
-		right: var(--topbar-right-offset);
-		width: var(--navbar-icon-width);
-		z-index: 2;
-	}
-	
-	#pocket-button-box {
-		display: none;
-	}
 
-	#urlbar {
-		margin: 0 !important;
-		border: none !important;
-		border-radius: 0 !important;
-	}
-	.urlbar-input-box {
-		margin-top: -2px;
-	}
+	/* navbar button alignment { */
+		toolbarbutton {
+			margin-top: calc(var(--navbar-alignment) + 4px) !important;
+			padding: 0px 2px !important;
+		}
+
+		#PanelUI-button {
+			margin-top: calc(var(--navbar-alignment) + 2px) !important;
+		}
+
+		#unified-extensions-button {
+			margin-top: calc(var(--navbar-alignment) + 4px) !important;
+		}
+
+		#pageAction-urlbar-_testpilot-containers {
+			display: none;
+		}
+
+		#urlbar-zoom-button {
+			margin-top: calc(var(--navbar-alignment) - 1px) !important;
+		}
+
+		#reader-mode-button {
+			margin-top: calc(var(--navbar-alignment) + 0px) !important;
+		}
+
+		#stop-reload-button {
+			margin-top: calc(var(--navbar-alignment) - 2px) !important;
+		}
+
+		#forward-button, #back-button {
+			position: relative;
+			top: -3px !important;
+			height: var(--navbar-height);
+		}
+	/* } */
 /* } */
 
 
@@ -155,10 +169,12 @@
 	#sidebar-box {
 		display: block;
 		position: fixed !important;
-		top: var(--top-offset);
+		top: 0;
 		left: 0;
-		width: var(--sidebar-width);
-		height: calc(100% - var(--top-offset));
+		width: var(--sidebar-width) !important;
+		height: 100%;
+		/* Higher z-index than navbar, so that we draw over it */
+		z-index: 4 !important;;
 		border-right: var(--border-width) solid var(--border-color);
 	}
 
@@ -185,25 +201,24 @@
 
 
 /* content { */
-	#sidebar-box[hidden=true] ~ #appcontent {
+	#sidebar-box[hidden=true] ~ #tabbrowser-tabbox {
 		--sidebar-width: 0px;
 	}
 
-	#appcontent {
+	#tabbrowser-tabbox {
 		display: block;
 		position: fixed !important;
 		top: var(--content-offset);
 		left: var(--sidebar-width);
-		width: calc(100% - var(--sidebar-width));
-		height: calc(100% - var(--content-offset));
+		width: calc(100% - var(--sidebar-width)) !important;
+		height: calc(100% - var(--content-offset)) !important;
 		/* this fixes a rare bug where the whole browser viewport becomes offset by 16px;
 		   probably caused by some erronous whitespace being present*/
 		/*font-size: 0;*/
 	}
 	
-	#tabbrowser-tabbox {
+	#tabbrowser-tabpanels {
 		width: 100%;
 		height: 100%;
-		margin: 0;
 	}
 /* } */

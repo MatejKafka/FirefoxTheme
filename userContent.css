@@ -1,10 +1,10 @@
 @media (prefers-color-scheme: light) { :root {
 	--main-bg-color: rgb(249, 249, 249);
-	--private-bg-color: rgb(185, 122, 255);
+	/*--private-bg-color: rgb(185, 122, 255);*/
 }}
 @media (prefers-color-scheme: dark) { :root {
 	--main-bg-color: rgb(24, 26, 27);
-	--private-bg-color: rgb(37, 0, 62);
+	/*--private-bg-color: rgb(37, 0, 62);*/
 }}
 
 @-moz-document url(about:newtab), url(about:blank) {
@@ -17,11 +17,13 @@
 	}
 }
 
+/*
 @-moz-document url(about:privatebrowsing) {
 	html {
 		--in-content-page-background: var(--private-bg-color) !important;
 	}
 }
+*/
 
 @media (prefers-color-scheme: dark) {
 	/* invert colors in PDF viewer */
