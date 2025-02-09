@@ -28,35 +28,24 @@
 }
 
 
-/* Remove navbar and sidebar in popup windows. */
-:root[chromehidden*="location"] #navigator-toolbox {
+/* Remove navbar and sidebar in popup and fullscreen windows. */
+:root[chromehidden*="location"] #navigator-toolbox,
+:root[sizemode="fullscreen"] #navigator-toolbox {
 	visibility: collapse;
 }
 
-:root[chromehidden*="location"] #sidebar-box {
+:root[chromehidden*="location"] #sidebar-box,
+:root[sizemode="fullscreen"] #sidebar-box {
 	visibility: collapse;
 }
 
-:root[chromehidden*="location"] #tabbrowser-tabbox {
-	top: 0;
-	left: 0;
-	width: 100% !important;
-	height: 100% !important;
+:root[chromehidden*="location"] #browser,
+:root[sizemode="fullscreen"] #browser {
+	top: 0 !important;
 }
 
-
-#main-window[sizemode="fullscreen"] #navigator-toolbox {
-	visibility: collapse;
-}
-
-#main-window[sizemode="fullscreen"] #sidebar-box {
-	visibility: collapse;
-}
-
-#main-window[sizemode="fullscreen"] #tabbrowser-tabbox {
-	top: 0;
-	left: 0;
-	width: 100% !important;
+:root[chromehidden*="location"] #tabbrowser-tabbox,
+:root[sizemode="fullscreen"] #tabbrowser-tabbox {
 	height: 100% !important;
 }
 
@@ -96,9 +85,9 @@
 	.urlbarView-body-inner {
 		border-top: none !important;
 	}
-	
-	#urlbar-input-container {
-		top: 2px;
+
+	#urlbar {
+		top: 2px !important;
 	}
 
 	#urlbar[open="true"] #urlbar-input-container {
@@ -160,6 +149,10 @@
 			top: -3px !important;
 			height: var(--navbar-height);
 		}
+
+		#urlbar-searchmode-switcher {
+			display: none !important;
+		}
 	/* } */
 /* } */
 
@@ -167,58 +160,30 @@
 
 /* sidebar { */
 	#sidebar-box {
-		display: block;
-		position: fixed !important;
-		top: 0;
-		left: 0;
+		position: relative;
+		/* compensate for shifting the whole #browser below */
+		top: calc(-1 * var(--content-offset));
 		width: var(--sidebar-width) !important;
-		height: 100%;
-		/* Higher z-index than navbar, so that we draw over it */
-		z-index: 4 !important;;
 		border-right: var(--border-width) solid var(--border-color);
 	}
 
-	#sidebar-box[hidden=true] {
-		visibility: collapse;
-		background-color: var(--main-bg-color) !important;
-	}
+	/* useful for styling based on whether it's visible */
+	/* #sidebar-box[hidden=true] {} */
 
 	#sidebar-header {
 		display: none;
 	}
-
-	#sidebar {
-		width: 100% !important;
-		height: 100%;
-		margin: 0;
-	}
-	
-	#browser {
-		background-color: var(--main-bg-color) !important;
-	}
 /* } */
 
-
-
 /* content { */
-	#sidebar-box[hidden=true] ~ #tabbrowser-tabbox {
-		--sidebar-width: 0px;
+	#browser {
+		/* without this, browser will be in front of the navbar and make it unusable */
+		top: var(--content-offset) !important;
+		background-color: var(--main-bg-color) !important;
 	}
 
 	#tabbrowser-tabbox {
-		display: block;
-		position: fixed !important;
-		top: var(--content-offset);
-		left: var(--sidebar-width);
-		width: calc(100% - var(--sidebar-width)) !important;
+		/* without this, content will overflow bottom of the screen */
 		height: calc(100% - var(--content-offset)) !important;
-		/* this fixes a rare bug where the whole browser viewport becomes offset by 16px;
-		   probably caused by some erronous whitespace being present*/
-		/*font-size: 0;*/
-	}
-	
-	#tabbrowser-tabpanels {
-		width: 100%;
-		height: 100%;
 	}
 /* } */
