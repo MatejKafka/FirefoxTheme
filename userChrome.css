@@ -173,6 +173,10 @@
 	#sidebar-header {
 		display: none;
 	}
+
+	#sidebar-splitter {
+		visibility: collapse;
+	}
 /* } */
 
 /* content { */
