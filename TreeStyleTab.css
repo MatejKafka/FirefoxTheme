@@ -1,3 +1,8 @@
+:root {
+  	/* set space for scrollbar to zero, we hide the scrollbar */
+	--shift-tabs-for-scrollbar-distance: 0;
+}
+
 @media (prefers-color-scheme: light) { :root {
 	--fg-color: black;
 	--main-bg-color: rgb(249, 249, 249);
@@ -60,10 +65,4 @@ tab-item.active tab-item-substance {
 /* hide scrollbar */
 #tabbar, #normal-tabs-container {
 	scrollbar-width: none;
-}
-
-/* hide extra margin for the (now hidden) scrollbar; copied from TST base.css stylesheet */
-:root.left.shift-tabs-for-scrollbar-only-on-hover.on-scrollbar-area:hover #tabbar.overflow.scrollbar-autohide tab-item:not(.pinned) tab-item-substance,
-:root.left:not(.shift-tabs-for-scrollbar-only-on-hover) #tabbar.overflow.scrollbar-autohide tab-item:not(.pinned) tab-item-substance {
-	margin-left: calc(var(--tab-margin-left) + var(--tab-indent));
 }
