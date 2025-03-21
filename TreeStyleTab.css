@@ -1,68 +1,68 @@
 :root {
-  	/* set space for scrollbar to zero, we hide the scrollbar */
-	--shift-tabs-for-scrollbar-distance: 0;
+    /* set space for scrollbar to zero, we hide the scrollbar */
+    --shift-tabs-for-scrollbar-distance: 0px;
 }
 
 @media (prefers-color-scheme: light) { :root {
-	--fg-color: black;
-	--main-bg-color: rgb(249, 249, 249);
-	--border-color: transparent;
-	--active-bg-color: rgb(185, 223, 255);
-	--hover-bg-color: #dddddd;
+    --fg-color: black;
+    --main-bg-color: rgb(249, 249, 249);
+    --border-color: transparent;
+    --active-bg-color: rgb(185, 223, 255);
+    --hover-bg-color: #dddddd;
 }}
 
 @media (prefers-color-scheme: dark) { :root {
-	--fg-color: white;
-	--main-bg-color: rgb(24, 26, 27);
-	--border-color: transparent;
-	--active-bg-color: rgb(70, 70, 70);
-	--hover-bg-color: #333333;
+    --fg-color: white;
+    --main-bg-color: rgb(24, 26, 27);
+    --border-color: transparent;
+    --active-bg-color: rgb(70, 70, 70);
+    --hover-bg-color: #333333;
 }}
 
 body {
-	font-size: 85%;
+    font-size: 85%;
 }
 
 #background {
-	background-color: var(--main-bg-color);
+    background-color: var(--main-bg-color);
 }
 
 .after-tabs {
-	border-top: 1px solid var(--border-color);
-	border-bottom: 1px solid var(--border-color);
-	cursor: pointer;
+    border-top: 1px solid var(--border-color);
+    border-bottom: 1px solid var(--border-color);
+    cursor: pointer;
 }
 
 tab-item-substance {
-	padding: 5px 5px 5px 0;
+    padding: 5px 5px 5px 0;
 }
 
 tab-item.collapsed {
-	display: none;
+    display: none;
 }
 
 tab-label {
-	margin-left: 3px;
+    margin-left: 3px;
     line-height: 1.2 !important;
 }
 
 tab-closebox {
-	display: none;
+    display: none;
 }
 
 tab-item {
-	pointer-events: all !important;
+    pointer-events: all !important;
 }
 
 tab-item:hover {
-	background-color: var(--hover-bg-color);
+    background-color: var(--hover-bg-color);
 }
 
 tab-item.active tab-item-substance {
-	background-color: var(--active-bg-color);
+    background-color: var(--active-bg-color);
 }
 
 /* hide scrollbar */
 #tabbar, #normal-tabs-container {
-	scrollbar-width: none;
+    scrollbar-width: none;
 }
