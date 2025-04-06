@@ -90,9 +90,11 @@
 		top: 2px !important;
 	}
 
-	#urlbar[open="true"] #urlbar-input-container {
+	#urlbar:not([open]) {
+		/* for some reason, the bottom of the urlbar overlaps the border of the navbar
+		   (even though visually it doesn't), and moving the urlbar up looks weird, so
+		   we just add the border back; very hacky */
 		border-bottom: var(--border-width) solid var(--border-color) !important;
-		border-radius: 0 !important;
 	}
 
 	.urlbarView {
