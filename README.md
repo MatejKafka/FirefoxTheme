@@ -17,20 +17,21 @@ Light theme:
 ## Setup
 
 1. Install Tree Style Tab extension (https://addons.mozilla.org/en-US/firefox/addon/tree-style-tab/).
-2. Enable custom styling support (see https://www.reddit.com/r/FirefoxCSS/comments/73dvty/tutorial_how_to_create_and_livedebug_userchromecss/).
-3. Copy `userChrome.css` and `userContent.css` to your `chrome` directory (details in the reddit post linked above).
-4. Open `about:addons` in Firefox:
+1. Enable custom styling support (see https://www.reddit.com/r/FirefoxCSS/comments/73dvty/tutorial_how_to_create_and_livedebug_userchromecss/).
+1. Copy `userChrome.css` and `userContent.css` to your `chrome` directory (details in the reddit post linked above).
+1. If you have a new-enough Firefox version that uses the [Nova UI](https://blog.mozilla.org/wp-content/blogs.dir/278/files/2026/05/distilled_nova_compact@2x.png) (big rounded buttons with colorful background everywhere), disable it by setting the `browser.nova.enabled` preference to `false`.
+1. Open `about:addons` in Firefox:
 	1. Allow the Tree Style Tab extension to run in private windows.
-	2. In the "Options" tab, scroll to the "Advanced" section, look for an input field labeled "Extra style rules for contents provided by Tree Style Tab".
-	3. Press the "Load from File" button and select the `TreeStyleTab.css` file from this repository.
-5. Restart Firefox.
-6. Enjoy the new look, create an issue here on GitHub if something seems to be broken.
+	1. In the "Options" tab, scroll to the "Advanced" section, look for an input field labeled "Extra style rules for contents provided by Tree Style Tab".
+	1. Press the "Load from File" button and select the `TreeStyleTab.css` file from this repository.
+1. Restart Firefox.
+1. Enjoy the new look, create an issue here on GitHub if something seems to be broken.
 
 ## Questions
 
 ### How do I switch between light and dark theme?
 
-The color scheme automatically  changes based on system theme, so switch on/off dark mode in system settings (on Windows 10, search "dark mode" in Start menu).
+The color scheme automatically changes based on system theme, so switch on/off dark mode in system settings (on Windows 10, search "dark mode" in Start menu).
 
 ### How do I maximize/minimize/close the window?
 
